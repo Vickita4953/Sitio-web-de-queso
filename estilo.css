@@ -1,0 +1,29 @@
+body {
+    background-color: bisque; /* Fondo color pastel */
+    color: chocolate; /* Texto color marrón oscuro */
+}
+
+/* Estilo para los span */
+span {
+    color: cadetblue; /* Texto en azul verdoso */
+}
+
+/* Estilo para los enlaces del menú */
+nav a {
+    color: darkblue; /* Color de texto de los enlaces */
+    text-decoration: none; /* Quitar subrayado */
+    font-weight: bold; /* Poner en negrita */
+    padding: 6px 12px; /* Espacio interno */
+    margin-right: 10px; /* Espacio entre enlaces */
+    border-radius: 8px; /* Bordes redondeados */
+    transition: all 0.3s ease; /* Transición suave */
+    background-color: #fffaf0; /* Fondo clarito como leche */
+}
+
+/* Efecto cuando pasas el mouse sobre los enlaces */
+nav a:hover {
+    background-color: #ffd700; /* Fondo dorado al pasar el mouse */
+    color: black; /* Cambiar texto a negro */
+    box-shadow: 0 0 10px #ffd700; /* Sombra dorada */
+    cursor: pointer; /* Cambia el cursor a una mano */
+}
