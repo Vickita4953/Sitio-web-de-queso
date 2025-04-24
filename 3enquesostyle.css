@@ -1,0 +1,32 @@
+body {
+    background-color: bisque;
+    color: chocolate;
+    font-family: 'Patrick Hand', cursive;
+}
+
+/* Estilo para las celdas del juego */
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    grid-template-rows: repeat(3, 1fr);    /* 3 filas */
+    gap: 10px;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.cell {
+    width: 80px;
+    height: 80px;
+    background-color: #f5f5f5;
+    border: 2px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    cursor: pointer;
+    text-align: center;
+}
+
+.cell:hover {
+    background-color: #d3d3d3;
+}

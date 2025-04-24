@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>3 en queso</title>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="3enquesostyle.css">
+    <style>
+        body {
+            font-family: 'Patrick Hand', cursive;
+            margin: 0;
+            background-color: bisque;
+            color: chocolate;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        nav {
+            margin-top: 15px;
+        }
+
+        .tablero {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            gap: 5px;
+            margin-top: 20px;
+        }
+
+        .celda {
+            width: 100px;
+            height: 100px;
+            background-color: #fffaf0;
+            font-size: 2em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border: 2px solid chocolate;
+        }
+
+        .marcador, .turno, .ganadora {
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #ffd700;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: chocolate;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="Datos-curiosos.html">Datos curiosos</a>
+            <a href="Comercio De Quesos.html">Comercio de Quesos</a>
+        </nav>
+
+        <header>
+            <h1>¡Bienvenido a 3 en queso!</h1>
+            <p>¡Diviértete con quesos y ratones!</p>
+        </header>
+
+        <section>
+            <div class="turno" id="turno">Turno de Jugadora 1 🧀</div>
+            <div class="marcador">🧀: <span id="puntaje1">0</span> - 🐭: <span id="puntaje2">0</span></div>
+            <div class="ganadora" id="ganadora"></div>
+            <div class="tablero" id="tablero"></div>
+            <button onclick="reiniciarJuego()">Reiniciar</button>
+        </section>
+    </main>
+
+    <script>
+        const tablero = document.getElementById("tablero");
+        const turnoTexto = document.getElementById("turno");
+        const marcador1 = document.getElementById("puntaje1");
+        const marcador2 = document.getElementById("puntaje2");
+        const ganadoraTexto = document.getElementById("ganadora");
+        let turno = "🧀";
+        let puntajes = { "🧀": 0, "🐭": 0 };
+        let celdas = [];
+
+        function crearTablero() {
+            tablero.innerHTML = "";
+            celdas = [];
+            for (let i = 0; i < 9; i++) {
+                const celda = document.createElement("div");
+                celda.classList.add("celda");
+                celda.addEventListener("click", () => marcarCelda(i));
+                tablero.appendChild(celda);
+                celdas.push("");
+            }
+        }
+
+        function marcarCelda(i) {
+            if (celdas[i] !== "" || ganadoraTexto.textContent !== "") return;
+
+            celdas[i] = turno;
+            tablero.children[i].textContent = turno;
+
+            if (verificarGanadora()) {
+                ganadoraTexto.textContent = `¡${turno} ha ganado!`;
+                puntajes[turno]++;
+                marcador1.textContent = puntajes["🧀"];
+                marcador2.textContent = puntajes["🐭"];
+                return;
+            }
+
+            if (celdas.every(c => c !== "")) {
+                ganadoraTexto.textContent = "¡Empate!";
+                return;
+            }
+
+            turno = turno === "🧀" ? "🐭" : "🧀";
+            turnoTexto.textContent = `Turno de ${turno}`;
+        }
+
+        function verificarGanadora() {
+            const combinaciones = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8],
+                [0, 3, 6], [1, 4, 7], [2, 5, 8],
+                [0, 4, 8], [2, 4, 6]
+            ];
+
+            return combinaciones.some(([a, b, c]) =>
+                celdas[a] && celdas[a] === celdas[b] && celdas[b] === celdas[c]
+            );
+        }
+
+        function reiniciarJuego() {
+            crearTablero();
+            turno = "🧀";
+            turnoTexto.textContent = `Turno de Jugadora 1 🧀`;
+            ganadoraTexto.textContent = "";
+        }
+
+        crearTablero();
+    </script>
+</body>
+</html>
+                
+            
