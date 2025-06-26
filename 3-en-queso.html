@@ -85,14 +85,6 @@
             <div class="ganadora" id="ganadora"></div>
             <div class="tablero" id="tablero"></div>
             <button onclick="reiniciarJuego()">Reiniciar</button>
-
-            <!-- Texto de apoyo -->
-            <p style="margin-top: 20px; font-size: 1em;">
-                💛 ¿Te gustó el juego? ¡Invítame un quesito en Ko-fi!
-            </p>
-
-            <!-- Botón de Ko-fi -->
-            <div id="boton-kofi" style="margin: 40px auto; text-align:center;"></div>
         </section>
     </main>
 
@@ -163,16 +155,17 @@
         crearTablero();
     </script>
 
-    <!-- Script de Ko-fi -->
-    <!-- Script de Ko-fi -->
-<script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
-<script type='text/javascript'>
-    kofiwidget2.init('Buy me a Ko-fi', '#f5ca73', 'W7W41FNW86');
-    kofiwidget2.draw('boton-kofi');
-</script>
+    <!-- Ko-fi widget tipo chat flotante -->
+    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+    <script>
+      kofiWidgetOverlay.draw('vickitachannel', {
+        'type': 'floating-chat',
+        'floating-chat.donateButton.text': 'Support Me',
+        'floating-chat.donateButton.background-color': '#fcbf47',
+        'floating-chat.donateButton.text-color': '#323842'
+      });
+    </script>
 </body>
-</body>
-</html>
 </html>
                 
             
