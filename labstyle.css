@@ -1,15 +1,18 @@
-<style>
 .boton-magico {
-  padding: 20px 40px;
-  border: 5px solid #000;
-  border-radius: 20px;
-  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-  background-size: 400% 400%;
-  animation: movimiento-color 10s ease infinite;
+    padding: 20px 40px;
+    border: 5px solid #000;
+    border-radius: 20px;
+    /* El degradado */
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    background-size: 400% 400%;
+    /* La conexión con la animación */
+    animation: movimiento-color 10s ease infinite;
+    cursor: pointer;
 }
+
+/* 2. El @keyframes debe estar fuera de las llaves del botón */
 @keyframes movimiento-color {
-  0% {background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
-</style>
